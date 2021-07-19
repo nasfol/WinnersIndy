@@ -239,14 +239,35 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Attendance\Create.cshtml" />
+    <Content Include="Views\ChildrenClass\Details.cshtml" />
+    <Content Include="Views\ChildrenClass\Delete.cshtml" />
+    <Content Include="Views\Attendance\GetAttendanceDate.cshtml" />
+    <Content Include="Views\Attendance\GetClassAttendance.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
+    <Content Include="Views\ChildrenClass\Create.cshtml" />
+    <Content Include="Views\ChildrenClass\Edit.cshtml" />
+    <Content Include="Views\ChildrenClass\Index.cshtml" />
+    <Content Include="Views\ChildrenClass\ReadOnly.cshtml" />
+    <Content Include="Views\Family\AddChildToFamily.cshtml" />
+    <Content Include="Views\Family\AddParentToFamily.cshtml" />
+    <Content Include="Views\Family\Create.cshtml" />
+    <Content Include="Views\Family\GetFamilyMember.cshtml" />
+    <Content Include="Views\Family\Index.cshtml" />
+    <Content Include="Views\Member\AddChildToClass.cshtml" />
+    <Content Include="Views\Member\AddTeacherToClass.cshtml" />
+    <Content Include="Views\Member\create.cshtml" />
+    <Content Include="Views\Member\Delete.cshtml" />
+    <Content Include="Views\Member\Details.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Member\GetChildren.cshtml" />
+    <Content Include="Views\Member\GetFamilyMember.cshtml" />
+    <Content Include="Views\Member\GetTeachers.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Attendance\" />
     <Folder Include="Views\ChildrenClassAttendance\" />
-    <Folder Include="Views\ChildrenClass\" />
-    <Folder Include="Views\Family\" />
-    <Folder Include="Views\Member\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
