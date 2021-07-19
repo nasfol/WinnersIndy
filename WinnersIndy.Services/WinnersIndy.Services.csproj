@@ -54,6 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceServices.cs" />
+    <Compile Include="ChildrenClassAttendanceServices.cs" />
+    <Compile Include="ChildrenClassServices.cs" />
+    <Compile Include="FamilyServices.cs" />
+    <Compile Include="MemberServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
