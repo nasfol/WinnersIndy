@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +65,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinnersIndy.Data\WinnersIndy.Data.csproj">
+      <Project>{ff948acc-4fbe-4dde-a1dd-8ca3f8067b2c}</Project>
+      <Name>WinnersIndy.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinnersIndy.Model\WinnersIndy.Model.csproj">
+      <Project>{143d80ac-5850-4298-a22c-6434bb5c38c1}</Project>
+      <Name>WinnersIndy.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

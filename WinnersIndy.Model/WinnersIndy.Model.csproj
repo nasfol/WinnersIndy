@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,11 +55,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceFolder\AttendanceCreate.cs" />
+    <Compile Include="AttendanceFolder\AttendanceList.cs" />
+    <Compile Include="AttendanceFolder\AttendanceListItem.cs" />
+    <Compile Include="AttendanceFolder\AttendanceSheet.cs" />
+    <Compile Include="AttendanceFolder\ChildrenClassAttendanceListItem.cs" />
+    <Compile Include="ChildAttendanceFolder\ChildList.cs" />
+    <Compile Include="ChildAttendanceFolder\ChildrenClassAttendanceCreate.cs" />
+    <Compile Include="ChildFolder\ChildDetails.cs" />
+    <Compile Include="ChildFolder\ChildrenListItem.cs" />
+    <Compile Include="ChildrenClassFolder\ChildrenClassChildDetail.cs" />
+    <Compile Include="ChildrenClassFolder\ChildrenClassCreate.cs" />
+    <Compile Include="ChildrenClassFolder\ChildrenClassDetail.cs" />
+    <Compile Include="ChildrenClassFolder\ChildrenClassEdit.cs" />
+    <Compile Include="FamilyModel\AddchildtoFamily.cs" />
+    <Compile Include="FamilyModel\AddParentToFamily.cs" />
+    <Compile Include="FamilyModel\FamilyCreate.cs" />
+    <Compile Include="FamilyModel\FamilyDetails.cs" />
+    <Compile Include="FamilyModel\FamilyListItem.cs" />
+    <Compile Include="FamilyModel\ParentDetails.cs" />
+    <Compile Include="FamilyModel\PersonDetails.cs" />
+    <Compile Include="MemberFolder\AddChild.cs" />
+    <Compile Include="MemberFolder\Children.cs" />
+    <Compile Include="MemberFolder\MemberCreate.cs" />
+    <Compile Include="MemberFolder\MemberDetails.cs" />
+    <Compile Include="MemberFolder\MemberEdit.cs" />
+    <Compile Include="MemberFolder\MemberListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinnersIndy.Data\WinnersIndy.Data.csproj">
+      <Project>{ff948acc-4fbe-4dde-a1dd-8ca3f8067b2c}</Project>
+      <Name>WinnersIndy.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

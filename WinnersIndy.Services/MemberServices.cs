@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinnersIndy.Data;
+using WinnersIndy.Model.MemberFolder;
 
 namespace WinnersIndy.Services
 {
     public class MemberServices
     {
-        public class MemberServices
-        {
+        
+        
             private readonly Guid _userId;
             public MemberServices(Guid userid)
             {
@@ -253,7 +256,7 @@ namespace WinnersIndy.Services
                     return family.FamilyMember;
                 }
             }
-        }
+        
 
     }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinnersIndy.Data;
+using WinnersIndy.Model.AttendanceFolder;
 
 namespace WinnersIndy.Services
 {
@@ -151,4 +153,4 @@ namespace WinnersIndy.Services
         }
     }
 }
-}
+
