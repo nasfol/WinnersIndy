@@ -2,18 +2,24 @@
 
 @{
     ViewBag.Title = "GetClassAttendance";
+    
+    
 }
 
-<h2>GetClassAttendance</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<br />
+<h2>Class Attendance for: @ViewBag.Date </h2>
+
+
+@*<p>
+    @ViewBag.Date
+</p>*@
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MemberId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -29,9 +35,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberId)
-            </td>
+            @*<td>
+                @Html.HiddenFor(modelItem => item.MemberId)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -42,9 +48,9 @@
                 @Html.DisplayFor(modelItem => item.InChurch)
             </td>
             <td>
-                @Html.ActionLink("Get Family List", "GetFamilyMember", "Member", new { id = item.MemberId }, null) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Get Family List", "GetFamilyMember", "Member", new { id = item.MemberId }, null) 
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
         </tr>
     }

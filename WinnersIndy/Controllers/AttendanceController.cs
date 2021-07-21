@@ -28,12 +28,14 @@ namespace WinnersIndy.Controllers
 
         public ActionResult Create(int id)
         {
+            ViewBag.Date = DateTime.Today;
             var service = CreateAttendanceservices();
             var model = new AttendanceList()
             {
                 ChildrenClassId = id,
                 AttendanceSheetList = service.GetAttendanceList(id)
             };
+
             return View(model);
 
         }
@@ -41,7 +43,21 @@ namespace WinnersIndy.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(AttendanceList model)
+
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            //if (model. != DateTime.Today || model.AttendanceDate==null)
+            //{
+                
+            //    return View(model);
+            //}
+            if (model.AttendanceSheetList == null)
+            {
+                return View(model);
+            }
             var service = CreateAttendanceservices();
             // model.AttendanceSheetList = service.GetAttendanceList(model.ChildrenClassId);
             if (service.CreateAttendance(model))
@@ -56,7 +72,10 @@ namespace WinnersIndy.Controllers
         //GET :Attendance
         public ActionResult GetClassAttendance(int id)
         {
+           
             var service = CreateAttendanceservices();
+            ViewBag.Date = service.GetDate(id).AttendanceDate;
+            
             return View(service.GetClassAttendance(id));
         }
 
@@ -65,5 +84,7 @@ namespace WinnersIndy.Controllers
             var service = CreateAttendanceservices();
             return View(service.GetAttendanceDate(id));
         }
+
+        
     }
 }

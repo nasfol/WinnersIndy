@@ -172,6 +172,19 @@ namespace WinnersIndy.Services
 
             public bool AddChildtoclass(AddChild model)
             {
+                //===========Check to prevent adding  a student that is already  added to a class.
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var checkchild = ctx
+                                .Members
+                                .Find(model.MemberId);
+                    if (checkchild.ChildrenClassId >=1)
+                    {
+                    return false;
+                    }
+
+                }
+
                 using (var ctx = new ApplicationDbContext())
                 {
                     var child = ctx

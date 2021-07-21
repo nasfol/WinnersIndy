@@ -21,12 +21,13 @@ namespace WinnersIndy.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var attendance = ctx.Attendances
-                                   .SingleOrDefault(e => e.ChildrenClassId == model.ChildrenClassId && e.AttendanceDate == model.AttendanceDate);
+                                   .SingleOrDefault(e => e.ChildrenClassId == model.ChildrenClassId && e.AttendanceDate == DateTime.Today);
                 if (attendance != null) return false;
+               // if (attendance.AttendanceDate != DateTime.Today) return false;
             }
             var entity = new Attendance()
             {
-                AttendanceDate = model.AttendanceDate,
+                AttendanceDate = DateTime.Today,
                 ChildrenClassId = model.ChildrenClassId
             };
             using (var ctx = new ApplicationDbContext())
@@ -34,7 +35,7 @@ namespace WinnersIndy.Services
                 ctx.Attendances.Add(entity);
                 ctx.SaveChanges();
                 var attendance = ctx.Attendances
-                    .Where(e => e.AttendanceDate == model.AttendanceDate && e.ChildrenClassId == model.ChildrenClassId)
+                    .Where(e => e.AttendanceDate ==DateTime.Today && e.ChildrenClassId == model.ChildrenClassId)
                     .FirstOrDefault();
 
                 foreach (var attendanceEntry in model.AttendanceSheetList)
@@ -80,6 +81,16 @@ namespace WinnersIndy.Services
 
             }
         }
+        public Attendance GetDate(int id)
+        {
+            using(var ctx= new ApplicationDbContext())
+            {
+                var date = ctx
+                                .Attendances
+                                .Find(id);
+                return date;
+            }
+        }
 
         public IEnumerable<AttendanceListItem> GetAllAttendance(int id)
         {
@@ -99,6 +110,7 @@ namespace WinnersIndy.Services
                                                                                     FirstName = m.Member.FirstName,
                                                                                     LastName = m.Member.LastName,
                                                                                     InChurch = m.InChurch
+                                                                                    
                                                                                 })
 
                                 })

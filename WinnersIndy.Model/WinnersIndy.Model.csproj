@@ -68,6 +68,7 @@
     <Compile Include="ChildrenClassFolder\ChildrenClassCreate.cs" />
     <Compile Include="ChildrenClassFolder\ChildrenClassDetail.cs" />
     <Compile Include="ChildrenClassFolder\ChildrenClassEdit.cs" />
+    <Compile Include="EmailFolder\EmailCreate.cs" />
     <Compile Include="FamilyModel\AddchildtoFamily.cs" />
     <Compile Include="FamilyModel\AddParentToFamily.cs" />
     <Compile Include="FamilyModel\FamilyCreate.cs" />
@@ -92,6 +93,9 @@
       <Project>{ff948acc-4fbe-4dde-a1dd-8ca3f8067b2c}</Project>
       <Name>WinnersIndy.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

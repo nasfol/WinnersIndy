@@ -78,6 +78,8 @@ namespace WinnersIndy.Data
             public int? ChildrenClassId { get; set; }
             public virtual ChildrenClass ChildrenClass { get; set; }
 
+           
+
 
 
         }

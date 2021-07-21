@@ -10,7 +10,7 @@ namespace WinnersIndy.Model.AttendanceFolder
     {
         public int ChildrenClassId { get; set; }
 
-        public DateTimeOffset AttendanceDate { get; set; }
+        //public DateTimeOffset AttendanceDate { get; set; }
         public List<AttendanceSheet> AttendanceSheetList { get; set; }
     }
 }
