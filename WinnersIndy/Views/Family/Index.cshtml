@@ -4,16 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Families</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Family", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FamilyId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AniversaryDate)
         </th>
@@ -26,9 +26,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.FamilyId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.AniversaryDate)
             </td>

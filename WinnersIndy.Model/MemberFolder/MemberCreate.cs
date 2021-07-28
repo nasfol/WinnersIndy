@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using WinnersIndy.Data;
+using WinnersIndy.Model.FamilyModel;
 
 namespace WinnersIndy.Model.MemberFolder
 {
@@ -13,9 +14,14 @@ namespace WinnersIndy.Model.MemberFolder
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid phone no.")]
+        [Display(Name ="Phone Number")]
         public string PhoneNumber { get; set; }
+        [Display(Name = "Email Address")]
+        [RegularExpression("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){1,})+)$", ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        [Display(Name = "Date of Bitrth")]
+        public DateTimeOffset DateOfBirth { get; set; }
         public HttpPostedFileBase File { get; set; }
         [Required]
         public string Address { get; set; }
@@ -25,5 +31,7 @@ namespace WinnersIndy.Model.MemberFolder
         public UnitService ServiceUnit { get; set; }
         [Required, Range(1, 2, ErrorMessage = "Select form the List")]
         public Sex Gender { get; set; }
+        public IEnumerable<FamilyListItem> Families { get; set; }
+        public int FamilyId { get; set; }
     }
 }

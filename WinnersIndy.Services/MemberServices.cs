@@ -41,7 +41,8 @@ namespace WinnersIndy.Services
                         OwnerId = _userId,
                         Gender = model.Gender,
                         ServiceUnit = model.ServiceUnit,
-                        MaritalStatus = model.MaritalStatus
+                        MaritalStatus = model.MaritalStatus,
+                        FamilyId=model.FamilyId
                     };
                 using (var ctx = new ApplicationDbContext())
                 {
@@ -92,7 +93,8 @@ namespace WinnersIndy.Services
                         DateOfBirth = member.DateOfBirth,
                         Address = member.Address,
                         EmailAddress = member.EmailAddress,
-                        FileContent = member.FileContent
+                        FileContent = member.FileContent,
+                        //FamilyName=member.Family.FamilyName
                     };
                 }
             }
@@ -121,6 +123,7 @@ namespace WinnersIndy.Services
                     member.FileContent = bytes;
                     member.ModifiedUtc = DateTimeOffset.Now;
                     member.Address = model.Address;
+                    //member.Family.FamilyName = model.FamilyName;
 
                     return ctx.SaveChanges() == 1;
                 }

@@ -14,7 +14,7 @@ namespace WinnersIndy.Model.MemberFolder
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTimeOffset DateOfBirth { get; set; }
         public HttpPostedFileBase File { get; set; }
         public byte[] FileContent { get; set; }
         public string Address { get; set; }

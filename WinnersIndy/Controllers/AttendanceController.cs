@@ -28,7 +28,7 @@ namespace WinnersIndy.Controllers
 
         public ActionResult Create(int id)
         {
-            ViewBag.Date = DateTime.Today;
+            ViewBag.Date = DateTime.Today.ToString("D");
             var service = CreateAttendanceservices();
             var model = new AttendanceList()
             {
@@ -74,7 +74,7 @@ namespace WinnersIndy.Controllers
         {
            
             var service = CreateAttendanceservices();
-            ViewBag.Date = service.GetDate(id).AttendanceDate;
+            ViewBag.Date = service.GetDate(id).AttendanceDate.ToString("D");
             
             return View(service.GetClassAttendance(id));
         }

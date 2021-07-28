@@ -167,6 +167,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Common\SendEmail.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\ChildrenClassAttendance.cs" />
@@ -264,6 +265,8 @@
     <Content Include="Views\Member\GetFamilyMember.cshtml" />
     <Content Include="Views\Member\GetTeachers.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplate\DisplayTimeOffset.cshtml" />
+    <Content Include="Views\Member\IndividualEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

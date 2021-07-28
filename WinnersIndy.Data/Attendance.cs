@@ -22,6 +22,8 @@ namespace WinnersIndy.Data
         public virtual ChildrenClassAttendance ChildrenClassAttendance { get; set; }
 
         [Display(Name = "Attendance Date")]
+        [DisplayFormat(DataFormatString = "{0:MMM, dd, yyyy}")]
+        //[DataType(DataType.DateTime.ToString("d"))]
         public DateTimeOffset AttendanceDate { get; set; }
 
     }

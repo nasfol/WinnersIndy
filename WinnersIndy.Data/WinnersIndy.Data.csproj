@@ -77,6 +77,18 @@
     <Compile Include="Migrations\202107191914188_seedaccount.designer.cs">
       <DependentUpon>202107191914188_seedaccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107222250363_date.cs" />
+    <Compile Include="Migrations\202107222250363_date.designer.cs">
+      <DependentUpon>202107222250363_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107222312520_date2.cs" />
+    <Compile Include="Migrations\202107222312520_date2.designer.cs">
+      <DependentUpon>202107222312520_date2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107222354545_thirdc.cs" />
+    <Compile Include="Migrations\202107222354545_thirdc.designer.cs">
+      <DependentUpon>202107222354545_thirdc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +105,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107191914188_seedaccount.resx">
       <DependentUpon>202107191914188_seedaccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107222250363_date.resx">
+      <DependentUpon>202107222250363_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107222312520_date2.resx">
+      <DependentUpon>202107222312520_date2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107222354545_thirdc.resx">
+      <DependentUpon>202107222354545_thirdc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

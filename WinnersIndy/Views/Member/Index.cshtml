@@ -3,16 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>List</h2>
-
+<br />
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Member", "Create") | @Html.ActionLink("List of Children", "GetChildren")| @Html.ActionLink("Send Bulk Email", "SendBulkEmail")
     <br />
-    @Html.ActionLink("ChildrenList", "GetChildren")
-    <br />
-    @Html.ActionLink("Teachers", "GetTeachers")
 </p>
+
+<h2>List of Members </h2>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -25,9 +22,9 @@
 }
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MemberId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -43,15 +40,18 @@
         <th>
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </th>
+        <th>
+            Action
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MemberId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -62,11 +62,15 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
+              @Html.DisplayFor(modelItem => item.EmailAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
+            <td>
+                @Html.ActionLink("Send Email", "IndividualEmail", new{ id = item.MemberId }) 
+            </td>
+
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |

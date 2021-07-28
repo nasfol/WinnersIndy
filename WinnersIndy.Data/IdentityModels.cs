@@ -52,6 +52,12 @@ namespace WinnersIndy.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
 
+            modelBuilder.Entity<Attendance>()
+                .HasOptional<ChildrenClass>(c => c.ChildrenClass)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+
 
         }
     }

@@ -158,10 +158,10 @@ namespace WinnersIndy.Controllers
                 if (result.Succeeded)
                 {
                     //TempCode
-                    //var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManager = new RoleManager<IdentityRole>(rolestore);
-                    //await roleManager.CreateAsync(new IdentityRole("Admin"));
-                    //UserManager.AddToRole(user.Id, "Admin");
+                    var rolestore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(rolestore);
+                    await roleManager.CreateAsync(new IdentityRole("Admin"));
+                    UserManager.AddToRole(user.Id, "Admin");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
