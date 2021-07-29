@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,7 +267,8 @@
     <Content Include="Views\Member\GetTeachers.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplate\DisplayTimeOffset.cshtml" />
-    <Content Include="Views\Member\IndividualEmail.cshtml" />
+    <Content Include="Views\Member\Email.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

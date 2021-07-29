@@ -137,30 +137,10 @@ namespace WinnersIndy.Controllers
 
         }
 
-        public ActionResult SendBulkEmail()
+        public ActionResult SendBulkEmail(Email model)
         {
 
-            //string sendto = String.Empty;
-            string sendto = "winners-indy@googlegroups.com";
-            var sevice = CrteateMemberService();
-            var memberLeist = sevice.GetMembers();
-            //foreach (var item in memberLeist)
-            //{
-            //    if (!string.IsNullOrEmpty(item.EmailAddress))
-            //    {
-            //        sendto += item.EmailAddress + ";";
-            //    }
-
-            //}
-            string from = "foluso.o.adegboye@gmail.com";
-            string messg = String.Format($"Dear  <br/>\n" +
-                $"Turnaround greetings to you in the name of the Lord Jesus christ<br/>\n" +
-                $"We just like to reach out to yoiuy and find out that you are not in church yesterday");
-
-            SendEmail sendEmail = new SendEmail();
-            //sendEmail.SendNotification(from, sendto.TrimEnd(';'), messg);
-            sendEmail.SendNotification(from, sendto, messg);
-            return RedirectToAction("Index");
+            return RedirectToAction("Email");
         }
 
         //GET:AddChildToClass
@@ -264,68 +244,53 @@ namespace WinnersIndy.Controllers
             string messg = String.Format($"Dear  {member.FirstName}<br/>\n" +
                 $"Turnaround greetings to you in the name of the Lord Jesus christ<br/>\n" +
                 $"We just like to reach out to yoiuy and find out that you are not in church yesterday");
-                
+            string subject = "Absent From Church"; 
             SendEmail sendEmail = new SendEmail();
-            sendEmail.SendNotification(from, member.EmailAddress, messg);
-            //try
-            //{
-            //    MailMessage message = new MailMessage();
-            //    SmtpClient smtp = new SmtpClient();
-            //    message.From = new MailAddress("foluso.o.adegboye@gmail.com");
-            //    message.To.Add(new MailAddress(member.EmailAddress));
-            //    message.Subject = "Test";
-            //    message.IsBodyHtml = true; //to make message body as html  
-            //    message.Body = messg;
-            //    smtp.Port = 587;
-            //    smtp.Host = "smtp.gmail.com"; //for gmail host  
-            //    smtp.EnableSsl = true;
-            //    smtp.UseDefaultCredentials = false;
-            //    smtp.Credentials = new NetworkCredential("foluso.o.adegboye@gmail.com", "Olasehinde1$");
-            //    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //    smtp.EnableSsl = true;
-            //    smtp.Send(message);
-
-                //}
-                //catch (Exception ex)
-                //{
-                //}
+            sendEmail.SendNotification( member.EmailAddress, messg,subject);
+            
 
                 return RedirectToAction("Index");
         }
 
-        public ActionResult IndividualEmail(Email model)
+        public ActionResult Email(Email model)
         {
+            if (model.Id != null)
+            {
+                ViewBag.CheckId = "true";
+            }
+            else
+            {
+                ViewBag.CheckId = null;
+            }
             return View();
         }
         [HttpPost]
-        [ActionName("IndividualEmail")]
+        [ActionName("Email")]
         public ActionResult IndividualEmail2(Email model)
         {
             var services = CrteateMemberService();
-            var member = services.GetMemberById(model.Id);
+            string sendTo = string.Empty;
+            if (model.Id!=null)
+            {
+                var member = services.GetMemberById(Convert.ToInt32(model.Id));
+                sendTo = member.EmailAddress;
+            }
+            else
+            {
+                sendTo = model.To;
+            }
+            
+            SendEmail SendEmail = new SendEmail();
+           
+            
             try
             {
                 if (ModelState.IsValid)
                 {
-                    MailMessage messagae = new MailMessage();
-                    //var smtp = new SmtpClient();
-                    messagae.From = new MailAddress(model.From);
-                    messagae.To.Add(new MailAddress(member.EmailAddress));
-                    //var password = "Your Email Password here";
-                    messagae.Subject = model.Subject;
-                    messagae.IsBodyHtml = true;
-                    messagae.Body = model.Body;
-                    var smtp = new SmtpClient
-                    {
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential("foluso.o.adegboye@gmail.com", "Olasehinde1$")
-                    };
-                    smtp.Send(messagae);
-                    return View();
+
+                    SendEmail.SendNotification(sendTo, model.Body, model.Subject);
+                    TempData["SaveResult"] = "Email was successfuly sent.";
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception ex)

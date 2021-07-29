@@ -9,7 +9,7 @@ namespace WinnersIndy.Common
 {
     public class SendEmail
     {
-        public void SendNotification(string from, string to, string body)
+        public void SendNotification( string to, string body, string subject )
         {
 
             
@@ -18,7 +18,7 @@ namespace WinnersIndy.Common
             {
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress(from);
+                message.From = new MailAddress("foluso.o.adegboye@gmail.com");
                 string[] multEmail = to.Split(';');
                 foreach (string item in multEmail)
                 {
@@ -26,7 +26,7 @@ namespace WinnersIndy.Common
                 }
                 //message.To.Add(new MailAddress(to));
 
-                message.Subject = "Test";
+                message.Subject = subject;
                 message.IsBodyHtml = true; //to make message body as html  
                 message.Body = body;
                 smtp.Port = 587;
