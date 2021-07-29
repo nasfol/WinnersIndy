@@ -78,6 +78,7 @@
     <Compile Include="FamilyModel\PersonDetails.cs" />
     <Compile Include="MemberFolder\AddChild.cs" />
     <Compile Include="MemberFolder\Children.cs" />
+    <Compile Include="MemberFolder\Email.cs" />
     <Compile Include="MemberFolder\MemberCreate.cs" />
     <Compile Include="MemberFolder\MemberDetails.cs" />
     <Compile Include="MemberFolder\MemberEdit.cs" />

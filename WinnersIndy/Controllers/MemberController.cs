@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.Mvc;
 using WinnersIndy.Model.MemberFolder;
 using WinnersIndy.Services;
+using System.Net;
+using System.Net.Mail;
+using WinnersIndy.Common;
 
 namespace WinnersIndy.Controllers
 {
@@ -18,6 +21,13 @@ namespace WinnersIndy.Controllers
             var service = new MemberServices(userid);
             return service;
         }
+        //This is to enable access to family list  and to be able to select family when adding  member
+        private FamilyServices CreateFamilyService()
+        {
+            var userid = Guid.Parse(User.Identity.GetUserId());
+            var service = new FamilyServices(userid);
+            return service;
+        }
         // GET: Member
         public ActionResult Index()
         {
@@ -28,7 +38,13 @@ namespace WinnersIndy.Controllers
         //GET:Member/create
         public ActionResult Create()
         {
+            var service = CreateFamilyService();
+
+            MemberCreate model = new MemberCreate();
+            ViewBag.MyList = new SelectList(service.GetFamilies().ToList(), "FamilyId", "FamilyName");
+
             return View();
+            
         }
         //POST:Member/Post
         [HttpPost]
@@ -43,7 +59,7 @@ namespace WinnersIndy.Controllers
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Member could not be added");
-            return View();
+            return View(model);
         }
         public ActionResult Details(int Id)
         {
@@ -55,6 +71,7 @@ namespace WinnersIndy.Controllers
         //GET:Restaurant/Edit
         public ActionResult Edit(int id)
         {
+            
             var service = CrteateMemberService();
             var model = service.GetMemberById(id);
             var modelupdate = new MemberEdit()
@@ -66,7 +83,8 @@ namespace WinnersIndy.Controllers
                 PhoneNumber = model.PhoneNumber,
                 DateOfBirth = model.DateOfBirth,
                 EmailAddress = model.EmailAddress,
-                FileContent = model.FileContent
+                FileContent = model.FileContent,
+
 
 
             };
@@ -117,6 +135,12 @@ namespace WinnersIndy.Controllers
             var service = CrteateMemberService();
             return View(service.GetChildren());
 
+        }
+
+        public ActionResult SendBulkEmail(Email model)
+        {
+
+            return RedirectToAction("Email");
         }
 
         //GET:AddChildToClass
@@ -197,6 +221,91 @@ namespace WinnersIndy.Controllers
             }
             return View(familymember);
         }
+        //===============================send Bulk Email =============//
+        
+
+        
+        //public ActionResult SendBulkEmail()
+        //{
+        //    string sendto = String.Empty;
+        //    var sevice = CrteateMemberService();
+        //    var memberLeist = sevice.GetMembers();
+        //   sendto= string.Join(";", memberLeist.Select(x => x.EmailAddress));
+
+        //    return View();
+        //}
+        //============= Send Email ====================//
+        public ActionResult SendEmail(int id)
+        {
+
+            var services = CrteateMemberService();
+            var member = services.GetMemberById(id);
+            string from = "foluso.o.adegboye@gmail.com";
+            string messg = String.Format($"Dear  {member.FirstName}<br/>\n" +
+                $"Turnaround greetings to you in the name of the Lord Jesus christ<br/>\n" +
+                $"We just like to reach out to yoiuy and find out that you are not in church yesterday");
+            string subject = "Absent From Church"; 
+            SendEmail sendEmail = new SendEmail();
+            sendEmail.SendNotification( member.EmailAddress, messg,subject);
+            
+
+                return RedirectToAction("Index");
+        }
+
+        public ActionResult Email(Email model)
+        {
+            if (model.Id != null)
+            {
+                ViewBag.CheckId = "true";
+            }
+            else
+            {
+                ViewBag.CheckId = null;
+            }
+            return View();
+        }
+        [HttpPost]
+        [ActionName("Email")]
+        public ActionResult IndividualEmail2(Email model)
+        {
+            var services = CrteateMemberService();
+            string sendTo = string.Empty;
+            if (model.Id!=null)
+            {
+                var member = services.GetMemberById(Convert.ToInt32(model.Id));
+                sendTo = member.EmailAddress;
+            }
+            else
+            {
+                sendTo = model.To;
+            }
+            
+            SendEmail SendEmail = new SendEmail();
+           
+            
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    SendEmail.SendNotification(sendTo, model.Body, model.Subject);
+                    TempData["SaveResult"] = "Email was successfuly sent.";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+                return View();
+            
+        }
+
+
 
     }
+
+
 }
+
+

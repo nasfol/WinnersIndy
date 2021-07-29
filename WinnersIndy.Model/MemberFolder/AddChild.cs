@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace WinnersIndy.Model.MemberFolder
         public int MemberId { get; set; }
         public int ChildrenClassId { get; set; }
 
+        [Display(Name = "Class Name")]
+        public string Name { get; set; }
 
         public ICollection<ChildrenClass> ChildrenClasses = new List<ChildrenClass>();
     }

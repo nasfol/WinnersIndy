@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Children Classes</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
@@ -24,9 +24,9 @@
 }
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ChildrenClassId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -39,9 +39,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ChildrenClassId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -57,7 +57,7 @@
                 }
 
                 @Html.ActionLink("Details", "Details", new { id = item.ChildrenClassId }) |
-                @Html.ActionLink("Attendance", "Create", "Attendance", new { id = item.ChildrenClassId }, null) |
+                @Html.ActionLink("Attendance", "Create", "Attendance", new { id = item.ChildrenClassId }, null) 
                 @*@Html.ActionLink("Add to class", "AddChildtoClass", new { id = item.ChildrenClassId })*@
 
 

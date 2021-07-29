@@ -45,7 +45,8 @@ namespace WinnersIndy.Data
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
             [Required]
-            public DateTime DateOfBirth { get; set; }
+            [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}")]
+            public DateTimeOffset DateOfBirth { get; set; }
             [Required]
             public string Address { get; set; }
             [Required, Range(1,2,ErrorMessage ="Select form the List")]

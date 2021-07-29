@@ -8,19 +8,19 @@
 <h2 id="">Details</h2>
 
 <div class="container-fluid">
-    <h4>MemberDetails</h4>
+    
 
     <hr />
     <div class="row ">
         <div class="col-md-6 color1">
             <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.MemberId)
-                </dt>
+                @*<dt>
+            @Html.DisplayNameFor(model => model.MemberId)
+        </dt>*@
 
-                <dd>
-                    @Html.DisplayFor(model => model.MemberId)
-                </dd>
+                @*<dd>
+            @Html.DisplayFor(model => model.MemberId)
+        </dd>*@
 
                 <dt>
                     @Html.DisplayNameFor(model => model.FirstName)
@@ -70,6 +70,13 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.Address)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FamilyName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FamilyName)
                 </dd>
 
 

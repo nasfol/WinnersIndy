@@ -4,7 +4,7 @@
     ViewBag.Title = "AddChildToClass";
 }
 
-<h2>AddChildToClass</h2>
+@*<h2>AddChildToClass</h2>*@
 
 
 @using (Html.BeginForm())
@@ -12,8 +12,11 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>AddChild</h4>
-        <hr />
+        <br />
+        <br />
+
+        <h4>Select from class list</h4>
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.HiddenFor(model => model.MemberId)
@@ -21,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ChildrenClassId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ChildrenClassId, new SelectList(Model.ChildrenClasses, "ChildrenClassId", "Name"))
 
@@ -32,7 +35,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add to Class" class="btn btn-default" />
             </div>
         </div>
     </div>

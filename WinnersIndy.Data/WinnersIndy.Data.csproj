@@ -65,35 +65,11 @@
     <Compile Include="IdentityUserLoginConfiguration.cs" />
     <Compile Include="IdentityUserRoleConfiguration.cs" />
     <Compile Include="Member.cs" />
-    <Compile Include="Migrations\202107191836214_first.cs" />
-    <Compile Include="Migrations\202107191836214_first.designer.cs">
-      <DependentUpon>202107191836214_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107191840339_second.cs" />
-    <Compile Include="Migrations\202107191840339_second.designer.cs">
-      <DependentUpon>202107191840339_second.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202107191914188_seedaccount.cs" />
-    <Compile Include="Migrations\202107191914188_seedaccount.designer.cs">
-      <DependentUpon>202107191914188_seedaccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107191836214_first.resx">
-      <DependentUpon>202107191836214_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107191840339_second.resx">
-      <DependentUpon>202107191840339_second.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107191914188_seedaccount.resx">
-      <DependentUpon>202107191914188_seedaccount.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,18 +4,17 @@
     ViewBag.Title = "GetFamilyMember";
 }
 
-<h2>GetFamilyMember</h2>
+@*<h2>GetFamilyMember</h2>*@
 
 <div>
-    <h4>FamilyDetails</h4>
+    <h3>Family Details</h3>
     <hr />
-    @Html.DisplayFor(model => model.FamilyName)
+    <h3>@Html.DisplayFor(model => model.FamilyName)</h3>
 
     <br />
     <br />
-    <br />
-    <br />
-    <h4>Family Members</h4>
+    
+    @*<h4>Members</h4>*@
     <table class="table">
         <tr>
             <th>
@@ -43,6 +42,7 @@
                     @Html.DisplayFor(model => modelitem.PhoneNumber)
                 </td>
             </tr>
+
         }
     </table>
 
