@@ -32,6 +32,6 @@ namespace WinnersIndy.Model.MemberFolder
         [Required, Range(1, 2, ErrorMessage = "Select form the List")]
         public Sex Gender { get; set; }
         public IEnumerable<FamilyListItem> Families { get; set; }
-        public int FamilyId { get; set; }
+        public int? FamilyId { get; set; }
     }
 }

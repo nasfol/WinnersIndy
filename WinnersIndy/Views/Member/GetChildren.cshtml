@@ -3,17 +3,13 @@
     ViewBag.Title = "GetChildren";
 }
 
-<h2>List Of Children</h2>
+<h2>Children</h2>
 <br />
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.MemberId)
-        </th>*@
+
+<table class="table table-body">
+    <tr class="column-header">
+       
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -32,9 +28,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.MemberId)
-            </td>*@
+           
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -50,10 +44,20 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })|
+                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId }) |
                 @Html.ActionLink("Add to class", "AddChildToClass", new { id = item.MemberId })
             </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .column-header {
+        background-color: lightgrey;
+    }
+
+    .table-body {
+        box-shadow: 0 0 15px 0;
+    }
+</style>

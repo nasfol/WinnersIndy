@@ -9,11 +9,11 @@
 <p>
     @Html.ActionLink("Add New Family", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-body ">
+    <tr class="column-header">
         @*<th>
-            @Html.DisplayNameFor(model => model.FamilyId)
-        </th>*@
+                @Html.DisplayNameFor(model => model.FamilyId)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AniversaryDate)
         </th>
@@ -27,8 +27,8 @@
     {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.FamilyId)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.FamilyId)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.AniversaryDate)
             </td>
@@ -44,3 +44,15 @@
     }
 
 </table>
+<style>
+    .column-header {
+        background-color: lightgrey;
+        
+    }
+
+    .table-body {
+        box-shadow: 0 0 15px 0;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        
+    }
+</style>

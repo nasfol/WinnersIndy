@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Children Classes</h2>
+<h2 class="class-header">Children Classes</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create Class", "Create")
     }
 </p>
 
@@ -22,15 +22,15 @@
         @TempData["SaveResult"]
     </div>
 }
-<table class="table">
-    <tr>
+<table class="table table-body">
+    <tr class="column-header">
         @*<th>
             @Html.DisplayNameFor(model => model.ChildrenClassId)
         </th>*@
-        <th>
+        <th class="colum-head-color">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        <th class="colum-head-color">
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
@@ -67,3 +67,21 @@
         </tr>
     }
 </table>
+<style>
+    .column-header {
+        background-color: lightgrey;
+    }
+
+    .table-body {
+        box-shadow: 0 0 15px 0;
+    }
+    .colum-head-color {
+        color: indigo;
+        font-family: 'Global Monospace'
+    }
+    .class-header{
+        font-family:'Global Monospace';
+        color:darkblue
+
+    }
+</style>

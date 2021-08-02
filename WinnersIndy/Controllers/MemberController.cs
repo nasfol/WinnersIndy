@@ -9,6 +9,7 @@ using WinnersIndy.Services;
 using System.Net;
 using System.Net.Mail;
 using WinnersIndy.Common;
+using WinnersIndy.Model.FamilyModel;
 
 namespace WinnersIndy.Controllers
 {
@@ -41,8 +42,13 @@ namespace WinnersIndy.Controllers
             var service = CreateFamilyService();
 
             MemberCreate model = new MemberCreate();
-            ViewBag.MyList = new SelectList(service.GetFamilies().ToList(), "FamilyId", "FamilyName");
-
+           //List<SelectListItem>  Items = new SelectList(service.GetFamilies(), "FamilyId", "FamilyName",model.FamilyId).ToList();
+           // Items.Insert(0, (new SelectListItem { Text = "SelectFamily", Value = "0" }));
+           // ViewBag.MyList = Items;
+            List<FamilyListItem> FamilyItem = service.GetFamilies().ToList();
+            FamilyListItem family = new FamilyListItem() { FamilyId = 0, FamilyName = "Select Family" };
+            FamilyItem.Add(family);
+            ViewBag.MyList = new SelectList( FamilyItem.OrderBy(x=>x.FamilyId).ToList(),"FamilyId","FamilyName");
             return View();
             
         }
@@ -53,6 +59,10 @@ namespace WinnersIndy.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var service = CrteateMemberService();
+            if (model.FamilyId == 0)
+            {
+                model.FamilyId = null;
+            }
             if (service.CreateMember(model))
             {
                 TempData["SaveResult"] = "Member added to the church Directory";
@@ -61,11 +71,12 @@ namespace WinnersIndy.Controllers
             ModelState.AddModelError("", "Member could not be added");
             return View(model);
         }
+        //=======================Get Member Details=============
         public ActionResult Details(int Id)
         {
 
             var service = CrteateMemberService();
-            var model = service.GetMemberById(Id);
+            MemberDetails model = service.GetMemberById(Id);
             return View(model);
         }
         //GET:Restaurant/Edit
@@ -90,6 +101,7 @@ namespace WinnersIndy.Controllers
             };
             return View(modelupdate);
         }
+        //===================Edit Members================
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(MemberEdit model, int id)
@@ -221,19 +233,8 @@ namespace WinnersIndy.Controllers
             }
             return View(familymember);
         }
-        //===============================send Bulk Email =============//
-        
-
-        
-        //public ActionResult SendBulkEmail()
-        //{
-        //    string sendto = String.Empty;
-        //    var sevice = CrteateMemberService();
-        //    var memberLeist = sevice.GetMembers();
-        //   sendto= string.Join(";", memberLeist.Select(x => x.EmailAddress));
-
-        //    return View();
-        //}
+       
+       
         //============= Send Email ====================//
         public ActionResult SendEmail(int id)
         {
@@ -251,7 +252,7 @@ namespace WinnersIndy.Controllers
 
                 return RedirectToAction("Index");
         }
-
+        //GET:Email
         public ActionResult Email(Email model)
         {
             if (model.Id != null)
@@ -264,6 +265,8 @@ namespace WinnersIndy.Controllers
             }
             return View();
         }
+        //POST:Email
+
         [HttpPost]
         [ActionName("Email")]
         public ActionResult IndividualEmail2(Email model)
@@ -300,6 +303,19 @@ namespace WinnersIndy.Controllers
                 return View();
             
         }
+
+        //public void SendBirthdayMessage()
+        //{
+        //    var services = CrteateMemberService();
+        //    var members = services.GetMembers();
+        //    foreach(var member in members)
+        //    {
+        //        if (member.DateOfBirth == DateTime.Today)
+        //        {
+        //            SendEmail(member.MemberId);
+        //        }
+        //    }
+        //}
 
 
 

@@ -84,17 +84,18 @@ namespace WinnersIndy.Services
                             ctx
                             .Members
                             .Single(e => e.MemberId == id);
-                    return new MemberDetails()
-                    {
-                        MemberId = member.MemberId,
-                        FirstName = member.FirstName,
-                        LastName = member.LastName,
-                        PhoneNumber = member.PhoneNumber,
-                        DateOfBirth = member.DateOfBirth,
-                        Address = member.Address,
-                        EmailAddress = member.EmailAddress,
-                        FileContent = member.FileContent,
-                        //FamilyName=member.Family.FamilyName
+                return new MemberDetails()
+                {
+                    MemberId = member.MemberId,
+                    FirstName = member.FirstName,
+                    LastName = member.LastName,
+                    PhoneNumber = member.PhoneNumber,
+                    DateOfBirth = member.DateOfBirth,
+                    Address = member.Address,
+                    EmailAddress = member.EmailAddress,
+                    FileContent = member.FileContent,
+                    FamilyName = member.FamilyId == null ? string.Empty : member.Family.FamilyName //Ternary operation
+                    
                     };
                 }
             }

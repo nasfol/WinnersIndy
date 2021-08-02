@@ -5,11 +5,11 @@
 }
 <br />
 <p>
-    @Html.ActionLink("Add New Member", "Create") | @Html.ActionLink("List of Children", "GetChildren")| @Html.ActionLink("Send Bulk Email", "SendBulkEmail")
+    @Html.ActionLink("Add New Member", "Create") | @Html.ActionLink("List of Children", "GetChildren")| @Html.ActionLink("Send Email To Members", "SendBulkEmail")
     <br />
 </p>
 
-<h2>List of Members </h2>
+<h2 class="class-header">Members </h2>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -20,27 +20,25 @@
         @TempData["SaveResult"]
     </div>
 }
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.MemberId)
-        </th>*@
-        <th>
+<table class="table table-body" >
+    <tr class="column-header">
+       
+        <th class="colum-head-color ">
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="colum-head-color ">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
-        <th>
+        <th class="colum-head-color ">
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
-        <th>
+        <th class="colum-head-color ">
             @Html.DisplayNameFor(model => model.EmailAddress)
         </th>
-        <th>
+        <th class="colum-head-color ">
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </th>
-        <th>
+        <th class="colum-head-color ">
             Action
         </th>
         <th></th>
@@ -48,10 +46,8 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.MemberId)
-            </td>*@
+        <tr class="member">
+            
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -80,4 +76,27 @@
     }
 
 </table>
+<style>
+    .column-header {
+        background-color: lightgrey;
+    }
 
+    .table-body {
+        box-shadow: 0 0 15px 0;
+    }
+
+    .colum-head-color {
+        color: indigo;
+        font-family: 'Global Monospace';
+        font-size:2rem;
+
+    }
+
+    .class-header {
+        font-family: 'Global Monospace';
+        color: darkblue;
+    }
+    .member td{
+        
+    }
+</style>

@@ -3,32 +3,32 @@
     ViewBag.Title = "GetFamilyMember";
 }
 
-<h2>GetFamilyMember</h2>
+<h2>Family Members</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+           First Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
+           Last Name
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Address
+        </th>
+
+        <th>
+            Phone Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceUnit)
+            Service Unit
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmailAddress)
+           Email Address
         </th>
 
         <th>
@@ -64,19 +64,15 @@
             <td>
                 @if (item.ServiceUnit.ToString() != "Child")
                 {
-                    // @Html.ActionLink("Send Email", "SendEmail", new { id = item.MemberId, onclick = "javascript:return false;" })
-                    @Html.ActionLink("Send Email", "SendEmail", new { id = item.MemberId })
+                    
+                    @Html.ActionLink("Send Email", "Email", new { id = item.MemberId })
 
                 }
                
 
             </td>
 
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.MemberId }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.MemberId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.MemberId })
-                </td>*@
+           
         </tr>
      }
 

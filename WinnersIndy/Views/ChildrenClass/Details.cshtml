@@ -12,12 +12,12 @@
     <br />
     
     
-    @*<dl class="dl-horizontal">*@
+  
 
     <table class="table">
         <tr>
             <th>
-                First Name
+               First Name
             </th>
             <th>
                 Last Name
@@ -50,5 +50,5 @@
 <p>
 
     @Html.ActionLink("Back to List", "Index")|
-    @Html.ActionLink("List Of Attendance", "GetAttendanceDate", "Attendance", new { id = Model.ChildrenClassId }, null)
+    @Html.ActionLink("Class Attendance", "GetAttendanceDate", "Attendance", new { id = Model.ChildrenClassId }, null)
 </p>
